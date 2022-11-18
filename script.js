@@ -227,13 +227,21 @@ switch (sign) {
 start = 0 end = 50 result = 275
 start = 0 end = 100 result = 1050
 start = 0 end = 5 result = 5
-start = 5 end = 5 result = 5 <=Не работает(надо переделать на цикл do while) */
+start = 5 end = 5 result = 5 */
+
+/*let sum = start + start;
+
+for (start, end; start <= end; start++) {
+    if ((start % 5) == 0) console.log(sum = start + sum)
+} */
 
 let sum = start + start;
 
-for ( start, end ; start <= end ; start++ ) {
-  if ((start%5)==0) console.log(sum=start + sum)
+do {
+    start++;
+    if ((start % 5) == 0) console.log(sum = start + sum)
 }
+while (start <= end)
 
 /* 5.2 В программе объявлена переменная word со строковым значением. Переверните строку, используя цикл, и выведите результат в консоль.
 word = "деписолев" result = "велосипед"
@@ -243,7 +251,8 @@ word = "ижыл" result = "лыжи" */
 let reverse = "";
 
 for (let i = word.length - 1; i >= 0; i--) {
-  reverse += word[i];}
+    reverse += word[i];
+}
 console.log(reverse)
 
 
@@ -259,3 +268,13 @@ result = "Слово не является палиндромом!"
 word = "радар"
 result = "Слово является палиндромом!" */
 
+let reverse = "";
+
+for (let i = word.length - 1; i >= 0; i--) {
+    reverse += word[i];
+}
+if ((reverse.toUpperCase()) === (word.toUpperCase())) {
+    console.log("Слово является палиндромом!")
+} else { console.log("Слово не является палиндромом!") }
+
+/*  */
