@@ -3,8 +3,7 @@ name = Анатолий last_name = Сидоров result = 15
 name = Семен last_name = Семенов result = 12
 name = Светлана last_name = Олеговна result = 16
 name = Максим last_name = Петров result = 12
-name = Леонардо last_name = да Винчи result = 16
-*/
+name = Леонардо last_name = да Винчи result = 16 */
 
 let name = "Всеволод";
 let last_name = "\nСтарозубов";
@@ -129,4 +128,134 @@ if (a > b && a > c) {
 если значение переменной temp от 10 до 24, a переменная weather имеет значение "clear", тогда значение переменной activity должно быть "bowling";
 в ином случае значение переменной activity должно быть "hiking".
  */
+
+if (temp >= 25 && weather == "clean") {
+    let activity = "golf"
+} else if (temp >= 10 && temp < 25 && weather == "clean") {
+    let activity = "bowling"
+} else {
+    let activity = "hiking"
+}
+
+/* 4.5 В программе определены две переменные со строковым значением word_1 и word_2. Допишите программу таким образом, чтобы в консоль выводилась строка наибольшей длины.
+word_1 = велосипед word_2 = скейт result = велосипед
+word_1 = дирижабль word_2 = люберцы result = дирижабль
+word_1 = школа word_2 = стоимость result = стоимость */
+
+console.log((word_1.length > word_2.length) ? word_1 : word_2)
+
+/* 4.6 В программе объявлена переменная task, в которой записано одно из строковых значений: удалить, переименовать, редактировать. Напишите программу, которая выводит в консоль:
+delete – при значении task – удалить;
+rename – при значении task – переименовать;
+edit – при значении task – редактировать. */
+
+switch (task) {
+    case "удалить":
+        console.log("delete");
+        break;
+    case "переименовать":
+        console.log("rename");
+        break;
+    case "редактировать":
+        console.log("edit");
+        break;
+}
+
+/* 4.7 В программе объявлены две переменные — price и range. Переменная range может принимать одно из трех строковых значений — month/day/week. Переменная price хранит в себе числовое значение. Необходимо написать программу, которая формирует строку с использованием данных переменных по следующему шаблону:
+<значение price> Р в <эквивалент значения range на русском языке> 
+price = 23000 range = month result = 23000 Р в месяц
+price = 15000 range = day result = 15000 Р в день
+price = 7500 range = week result = 7500 Р в неделю */
+
+switch (range) {
+    case "day":
+        console.log(price + " Р в день");
+        break;
+    case "week":
+        console.log(price + " Р в неделю");
+        break;
+    case "month":
+        console.log(price + " Р в месяц");
+        break;
+}
+
+/* 4.8 В программе объявлены три переменные — a, b и sign. В переменных a и b хранятся числовые значения. В переменную sign записано строковое значение одного из математических операторов +, -, /, *. Напишите простой калькулятор, который в зависимости от значения переменной sign будет совершать соответствующие математические операции с переменными a и b. Результат необходимо выводить в консоль. Гарантируется, что переменная b не равна нулю.
+a = 5 b = 3 sign = + result = 8
+a = 12 b = 4 sign = - result = 8
+a = 5 b = 6 sign = * result = 30
+a = 6 b = 2 sign = / result = 3 */
+
+switch (sign) {
+    case "+":
+        console.log(a + b);
+        break;
+    case "-":
+        console.log(a - b);
+        break;
+    case "*":
+        console.log(a * b);
+        break;
+    case "/":
+        console.log(a / b);
+        break;
+}
+
+/* 4.9 В дополнение к заданию 4.8 необходимо правильно обработать случай деления на 0. При попытке поделить на 0 программа должна выводить в консоль сообщение: Делить на 0 нельзя!.
+a = 5 b = 3 sign = + result = 8
+a = 12 b = 4 sign = - result = 8
+a = 6 b = 0 sign = / result = Делить на 0 нельзя!
+a = 6 b = 2 sign = / result = 3 */
+
+switch (sign) {
+    case "+":
+        console.log(a + b);
+        break;
+    case "-":
+        console.log(a - b);
+        break;
+    case "*":
+        console.log(a * b);
+        break;
+    case "/":
+        if (b > 0) {
+            console.log(a / b);
+        } else { console.log("Делить на 0 нельзя!") }
+        break;
+}
+
+/* 5.1 В программе объявлены две переменные start и end. Используя цикл, посчитайте сумму чисел из диапазона значений от start до end (включая концы), кратные значению 5. Результат выведите в консоль.
+start = 0 end = 50 result = 275
+start = 0 end = 100 result = 1050
+start = 0 end = 5 result = 5
+start = 5 end = 5 result = 5 <=Не работает(надо переделать на цикл do while) */
+
+let sum = start + start;
+
+for ( start, end ; start <= end ; start++ ) {
+  if ((start%5)==0) console.log(sum=start + sum)
+}
+
+/* 5.2 В программе объявлена переменная word со строковым значением. Переверните строку, используя цикл, и выведите результат в консоль.
+word = "деписолев" result = "велосипед"
+word = "алокш" result = "школа"
+word = "ижыл" result = "лыжи" */
+
+let reverse = "";
+
+for (let i = word.length - 1; i >= 0; i--) {
+  reverse += word[i];}
+console.log(reverse)
+
+
+/* 5.3 В программе объявлена переменная word, в которой записано строковое значение. Определите, является ли word палиндромом:
+если является, выведите в консоль "Слово является палиндромом!";
+если не является, выведите в консоль "Слово не является палиндромом!".
+word = "Доход"
+result = "Слово является палиндромом!"
+word = "ШАЛАШ"
+result = "Слово является палиндромом!"
+word = "Велосипед"
+result = "Слово не является палиндромом!"
+word = "радар"
+result = "Слово является палиндромом!" */
 
