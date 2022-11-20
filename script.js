@@ -356,3 +356,46 @@ num = 3 result = "9 81 6561"
 num = 4 result = "16 256 65536"
 num = 5 result = "25 625 390625" */
 
+// !!! Не срабатывает в тестах!!!
+function square(num) {
+    return num * num;
+}
+
+for (let i = 1; i <= 1; i++) {
+    console.log(`${square(num)} + ${square(square(num))} + ${square(square(square(num)))}`);
+}
+
+/* 6.5 В программе объявлена переменная data, в которой записано строковое значение. Напишите функцию getNumber(data), которая преобразовывает строку в число по следующему правилу:
+если переменная data содержит не число, функция должна вернуть численное значение 0;
+если переменная data содержит число, например "123", то функция возвращает числовое значение 123.
+Вызовите эту функцию и выведите результат в консоль.
+data = "привет" result = 0
+data = "120px" result = 120
+data = "120" result = 120
+data = "двадцать" result = 0 */
+
+function getNumber(data) {
+    newData = parseInt(data);
+    if (!isNaN(newData)) {
+        console.log(newData);
+    } else {
+        console.log(0);
+    }
+}
+
+getNumber(data)
+
+/* 6.6 В программе объявлены две переменные — value и total, в которых записаны числовые значения. Напишите функцию getPercent(value, total), которая возвращает процент числа value от значения total. Вызовите эту функцию с value и total в качестве аргументов. Результат работы функции выведите в консоль.
+value = 4 total = 80 result = 5
+value = 14 total = 140 result = 10
+value = 6 total = 24 result = 25
+value = 50 total = 50 result = 100 */
+
+function getPercent(value, total) {
+    percent = ((value * 100) / total);
+    console.log(percent);
+}
+
+getPercent(value, total)
+
+/* 9.1 */
