@@ -475,7 +475,19 @@ console.log(sum);
 "list_1" = [2,4] "list_2" = [4,6] "result" = [4,16,16,36]
 "list_1" = [] "list_2" = [] "result" = [] */
 
-/* 9.5 */
+list_1 = list_1.concat(list_2);
+
+list_1.forEach(function(element, index, array){
+    array[index] = element* element;
+});
+console.log(list_1);
+
+/* 9.5 В программе объявлена переменная list, в которую записан массив из положительных и отрицательных числовых значений. Используя цикл, посчитайте сумму положительных чисел и выведите результат в консоль.
+"list" = [12,-4,5,32,2] "result" = 51
+"list" = [-12,3,65,3,-5] "result" = 71
+"list" = [3,-4,32,1,-4] "result" = 36 */
+
+
 
 /* 9.6 */
 
