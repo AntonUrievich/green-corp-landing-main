@@ -512,15 +512,13 @@ list = [9,34,2,54,2] result = 108 */
 "list" = [5,4,3,11,32] "result" = [32,11,3,4,5]
 "list" = [9,34,2,54,2] "result" = [2,54,2,34,9] */
 
-Array.prototype.revMass = function (){
-    var a = [];
-    for (i = 0; i < this.length; i++){
-       a[i] = this[(this.length - 1) - i]
-    }
-    return a
- }
- 
- console.log(list.revMass())
+let result = [];
+
+for (let i = list.length - 1; i >=0 ;i--) {
+    result.push(list[i]);
+}
+
+console.log(result)
 
 /* 9.9 В программе объявлена переменная sentence со строковым значением. Преобразуйте эту строку в массив так, чтобы каждое слово было отдельным элементом массива. Результат выведите в консоль.
 Метод строки split() использовать нельзя.
@@ -544,6 +542,17 @@ list = [2,45,3,23,6] result = 16
 list = [5,3,31,1,12] result = 10
 list = [5,4,3,11,32] result = 11
 list = [9,34,2,54,2] result = 20 */
+
+function average (list) {
+    let s = 0;
+    for ( let i = 0; i < list.length; i++) {
+        s += list[i];
+    }
+    let result = Math.round(s/list.length)
+    return result;
+}
+
+console.log(average (list))
 
 /* 9.12 В программе объявлена переменная list, в которой записан массив из чисел и логических значений. Используя цикл, посчитайте сумму числовых значений до первого логического значения. Дойдя до логического значения, остановите цикл. Результат выведите в консоль.
 "list" = [2,54,2,54,false,2]
