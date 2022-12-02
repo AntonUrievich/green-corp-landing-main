@@ -506,6 +506,10 @@ list = [5,3,31,1,12] result = 31
 list = [5,4,3,11,32] result = 96
 list = [9,34,2,54,2] result = 108 */
 
+var min = Math.min(...list);
+var max = Math.max(...list);
+console.log(min*max)
+
 /* 9.8 В программе объявлена переменная list, в которую записан массив из числовых значений. Напишите программу, которая переворачивает массив list и выводит результат в консоль. Метод массива reverse() использовать нельзя.
 "list" = [2,45,3,23,6] "result" = [6,23,3,45,2]
 "list" = [5,3,31,1,12] "result" = [12,1,31,3,5]
@@ -615,3 +619,21 @@ list = ["развитый","вступать","помещение","жилой",
 "result" = "Яблоко"
 "list" = [{"product":"Портфель","price":60},{"product":"Рюкзак","price":44},{"product":"Туфли","price":54}]
 "result" = "Портфель" */
+
+let list = [
+    { product: "Apple", price: 25 },
+    { product: "Cherry", price: 32 },
+    { product: "Strawberry", price: 45 }
+]
+
+function value_max(list) {
+    var max = 0;
+    for (let value of list) {
+        if (value.price > max) {
+            max = value.price;
+        }
+    }
+    return max;
+}
+
+console.log(value_max(list));
