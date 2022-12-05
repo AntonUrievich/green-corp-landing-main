@@ -663,8 +663,9 @@ console.log(average (list))
 "result" = [10,11,12,13,14,15,16,17,18,19,20] */
 
 list = [];
-for (let i=10; i<=20; i++) {
-list.push(i);}
+for (let i = 10; i <= 20; i++) {
+    list.push(i);
+}
 console.log(list);
 
 /* 9.14 В программе объявлена переменная list, в которую записан массив. Используя цикл, сформируйте массив numbers_list, который содержит в себе только числа из массива list. Если в процессе прохода циклом по массиву list обнаружится значение false, последующие значения рассматривать не нужно. В конце программы выведите значение переменной numbers_list в консоль. 
@@ -689,8 +690,10 @@ console.log(list);
 
 let cnt = 0;
 for (let val of list) {
-if (val.toLowerCase() !== "default") {
-cnt++;}}
+    if (val.toLowerCase() !== "default") {
+        cnt++;
+    }
+}
 console.log(cnt)
 
 /* 9.16 В программе объявлена переменная list, в которую записан массив из строковых значений. Сформируйте строку из первых букв каждого элемента массива и выведите ее в консоль. Гарантируется, что каждый элемент массива не нулевой длины.
@@ -701,7 +704,8 @@ list = ["развитый","вступать","помещение","жилой",
 
 let str = "";
 for (let el of list) {
-str += el[0];}
+    str += el[0];
+}
 console.log(str)
 
 /* 9.17 В программе объявлена переменная obj, содержащая объект с подобным набором значений:
@@ -718,6 +722,17 @@ console.log(str)
 "obj" = {"Велосипед":"лето","Лыжи":"зима","Сноуборд":"зима"} "result" = {"лето":1,"зима":2}
 "obj" = {"Май":"весна","Июнь":"лето","Январь":"зима","Март":"весна","Июль":"лето"} "result" = {"весна":2,"лето":2,"зима":1} */
 
+hash = {};
+
+for (let k in obj) {
+    if (hash[obj[k]]) {
+        hash[obj[k]]++;
+    } else {
+        hash[obj[k]] = 1;
+    }
+}
+console.log(hash)
+
 /* 9.18 В программе объявлена переменная list, в которую записан массив из объектов. В каждом объекте записаны название продукта и его стоимость.
 Выведите в консоль название продукта, цена которого является максимальной в заданном массиве. Если таких несколько, выведите название первого из них.
 "list" = [{"product":"Велосипед","price":60},{"product":"Лыжи","price":40},{"product":"Скейт","price":32}]
@@ -733,14 +748,13 @@ let list = [
     { product: "Strawberry", price: 45 }
 ]
 
-function value_max(list) {
-    var max = 0;
-    for (let value of list) {
-        if (value.price > max) {
-            max = value.price;
-        }
+let max = 0;
+let word = "";
+for (let i = 0; i < list.length; i++) {
+    //max = Math.max(max, list[i].price);
+    if (list[i].price > max) {
+        word = list[i].product;
+        max = list[i].price;
     }
-    return max;
 }
-
-console.log(value_max(list));
+console.log(word);
