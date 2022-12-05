@@ -460,12 +460,66 @@ var longest = list.sort(
 
 console.log(longest)
 
+/* !!! Циклы for, for in, for of, forEach !!! */
+
+/* Дополнительное задание к задаче 9.3.
+Создать функцию. которая будет генерировать массив с случайными числами от 1 до 100 */
+
+let arr = [];
+function getRandom(n) {
+    return Math.floor(Math.random() *n);
+}
+let length = 10; // количество случайных чисел в массиве
+
+while (length--) {
+    arr.push(getRandom(100)); // числа до 100
+}
+
+console.log(arr)
+
 /* 9.3 В программе объявлена переменная list, которая содержит массив чисел. Используя цикл, посчитайте сумму чисел и выведите в консоль.
 "list" = [23,13,3] "result" = 39
 "list" = [3,4,63] "result" = 70
 "list" = [-23,4,7] "result" = -12
 "list" = [2,41,13] "result" = 56 */
 
+// V1 for
+console.time("for");
+let sum = 0;
+for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+}
+console.log("Сумма for:", sum);
+console.timeEnd("for");
+
+// V2 for in
+console.time("for in");
+let sum = 0;
+for (let k in arr) {
+    sum += arr[k];
+}
+console.log("Сумма for in:", sum);
+console.timeEnd("for in");
+
+// V3 for of
+console.time("for of");
+let sum = 0;
+for (let val of arr) {
+    sum += val;
+}
+console.log("Сумма for of:", sum);
+console.timeEnd("for of");
+
+// V4 forEach
+console.time("forEach");
+let sum = 0;
+arr.forEach(function(el) {
+    sum += el;
+});
+console.log("Сумма forEach:", sum);
+console.timeEnd("forEach");
+
+// my solution for this task
 const sum = list.reduce((partialSum, a) => partialSum + a, 0);
 console.log(sum);
 
@@ -498,7 +552,20 @@ console.log(result);
 /* 9.6 В программе объявлена переменная list, в которую записан массив числовых значений от 1 до 100. Используя цикл, сформируйте сумму из простых чисел этого диапазона и выведите результат в консоль.
 "list" = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99] "result" = 1060 */
 
+let result = 0;
+for (let i = 2; i < list.length; i++) {
+    let count = 0;
+    for (let num of list) {
+        if (num > list[i] || count > 3) break;
 
+        if (list[i] % num === 0) {
+            count++;
+        }
+    }
+    if (count === 2) result += list[i];
+
+}
+console.log(result);
 
 /* 9.7 В программе объявлена переменная list, в которую записан массив из числовых значений. Рассчитайте произведение максимального и минимального элементов массива. Результат выведите в консоль.
 list = [2,45,3,23,6] result = 90
@@ -506,9 +573,21 @@ list = [5,3,31,1,12] result = 31
 list = [5,4,3,11,32] result = 96
 list = [9,34,2,54,2] result = 108 */
 
+let max = -Infinity;
+let min = Infinity;
+for (let el of list) {
+    max = Math.max(max,el);
+    min = Math.min(min,el);
+}
+console.log(max*min;)
+
+// my solution
 var min = Math.min(...list);
 var max = Math.max(...list);
-console.log(min*max)
+console.log(min*max);
+
+// or more shortly
+console.log(Math.max(...list) * Math.min(...list));
 
 /* 9.8 В программе объявлена переменная list, в которую записан массив из числовых значений. Напишите программу, которая переворачивает массив list и выводит результат в консоль. Метод массива reverse() использовать нельзя.
 "list" = [2,45,3,23,6] "result" = [6,23,3,45,2]
@@ -521,7 +600,6 @@ let result = [];
 for (let i = list.length - 1; i >=0 ;i--) {
     result.push(list[i]);
 }
-
 console.log(result)
 
 /* 9.9 В программе объявлена переменная sentence со строковым значением. Преобразуйте эту строку в массив так, чтобы каждое слово было отдельным элементом массива. Результат выведите в консоль.
@@ -534,6 +612,19 @@ console.log(result)
 "result" = ["Семь","раз","отмерь,","один","раз","отрежь"]
 "sentence" = "Слово не воробей, все не воробей кроме воробья"
 "result" = ["Слово","не","воробей,","все","не","воробей","кроме","воробья"]*/
+
+let words = [];
+let word = "";
+for (let i = 0; i < sentence.length; i++) {
+    if (sentence[i] === " ") {
+        words.push(word);
+        word = "";
+    } else {
+        word += sentence[i];
+    }
+}
+words.push(word);
+console.log(words);
 
 /* 9.10 В программе объявлена переменная list, в которую записан массив из числовых значений. Напишите функцию count(list), которая принимает массив в качестве аргумента и возвращает количество четных элементов в массиве. Вызовите функцию count(list) и в качестве аргумента передайте ей список list. Выведите в консоль то, что вернет функция.
 list = [2,45,3,23,6] result = 2
