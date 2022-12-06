@@ -632,6 +632,18 @@ list = [5,3,31,1,12] result = 1
 list = [5,4,3,11,32] result = 2
 list = [9,34,2,54,2] result = 4 */
 
+function quantityEvenNum() {
+    const result = [];
+    for (let value of list) {
+        if (value % 2 === 0) {
+            result.push(value);
+        }
+    }
+    return result;
+}
+
+console.log(quantityEvenNum(list).length)
+
 /* 9.11 В программе объявлена переменная list, в которую записан массив из числовых значений. Гарантируется, что массив не пустой. Реализуйте функцию average(list), которая принимает в качестве аргумента массив, рассчитывает среднее значение элементов массива, округляет получившееся значение по правилам математики и получившееся значение возвращает. Вызовите функцию average(list) и в качестве аргумента передайте список list. То, что функция вернет, необходимо вывести в консоль.
 list = [2,45,3,23,6] result = 16
 list = [5,3,31,1,12] result = 10
@@ -659,6 +671,16 @@ console.log(average (list))
 "list" = [2,false,4,23,true,55,2]
 "result" = 2 */
 
+let result = 0;
+for ( let value of list) {
+  if (typeof(value) === "number") {
+    result += value;
+  } else if (typeof(value) === "boolean") {
+    break;
+  }
+}
+console.log(result)
+
 /* 9.13 Используя цикл, сформируйте массив list со значениями от 10 до 20. Выведите значение переменной list в консоль.
 "result" = [10,11,12,13,14,15,16,17,18,19,20] */
 
@@ -677,6 +699,16 @@ console.log(list);
 "result" = [4,2,65,3,2,11]
 "list" = ["привет","пока"]
 "result" = [] */
+
+let hash = [];
+
+for (let val of list) {
+  if (typeof(val) === "number") {
+    hash.push(val);
+  } else if (val === false) { break; }
+}
+
+console.log(hash)
 
 /* 9.15 В программе объявлена переменная list, в которой записан массив из строковых значений. Напишите программу, которая считает количество элементов в массиве list без учета элементов со значением "default" и выводит результат в консоль. Сравнение должно быть регистронезависимым.
 "list" = ["Лёша","default","полке","клопа","нашёл"]
