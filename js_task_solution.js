@@ -877,3 +877,107 @@ function selectionSort(arr) {
 selectionSort(arr);
 console.log(arr);
 console.timeEnd("choise")
+
+// Сортировка вставками для массива в 100.000 элементов составляет 5-7 секунд
+
+console.time("insertion")
+const insertionSort = arr => {
+    for (let i = 1, l = arr.length; i < l; i++) {
+        const current = arr[i];
+        let j = i;
+        while (j > 0 && arr[j - 1] > current) {
+            arr[j] = arr[j - 1];
+            j--;
+        }
+        arr[j] = current;
+    }
+    return arr;
+};
+insertionSort(arr);
+console.log(arr);
+console.timeEnd("insertion")
+
+// Сортировка слиянием для массива в 100.000 элементов составляет 0,2-0,3 секунды
+
+console.time("merge")
+const mergeSort = arr => {
+    // Проверяем корректность переданных данных
+    if (!arr || !arr.length) {
+        return null;
+    }
+    //Если массив содержит один элемент просто возвращаем его
+    if (arr.length <= 1) {
+        return arr;
+    }
+    // Находим середину массива и делим его на два
+    const middle = Math.floor(arr.length / 2);
+    const arrLeft = arr.slice(0, middle);
+    const arrRight = arr.slice(middle);
+    // Для новых массивов снова вызываем сортировку,
+    // сливаем их и возвращаем снова единый массив
+    return merge(mergeSort(arrLeft), mergeSort(arrRight));;
+};
+
+const merge = (arrFirst, arrSecond) => {
+    const arrSort = [];
+    let i = j = 0;
+    // сравниваем два массива, поочередно сдвигая указатели
+    while (i < arrFirst.length && j < arrSecond.length) {
+        arrSort.push(
+            (arrFirst[i] < arrSecond[j]) ?
+                arrFirst[i++] : arrSecond[j++]
+        );
+    }
+    // обрабатываем последний элемент при разной длине массивов
+    // и возвращаем один отсортированный массив
+    return [
+        ...arrSort,
+        ...arrFirst.slice(i),
+        ...arrSecond.slice(j)
+    ];
+};
+mergeSort(arr);
+console.log(arr);
+console.timeEnd("merge")
+
+// Сортировка расческой для массива в 100.000 элементов составляет 0,07-0,08 секунды
+
+console.time("comb")
+const combSort = arr => {
+    const l = arr.length;
+    const factor = 1.247;
+    let gapFactor = l / factor;
+    while (gapFactor > 1) {
+        const gap = Math.round(gapFactor);
+        for (let i = 0, j = gap; j < l; i++, j++) {
+            if (arr[i] > arr[j]) {
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+        }
+        gapFactor = gapFactor / factor;
+    }
+    return arr;
+};
+combSort(arr);
+console.log(arr);
+console.timeEnd("comb")
+
+// Сортировка гномья для массива в 100.000 элементов составляет 0,02-0,04 секунды
+
+console.time("gnome")
+const gnomeSort = arr => {
+    const l = arr.length;
+    let i = 1;
+    while (i < l) {
+        if (i > 0 && arr[i - 1] > arr[i]) {
+            [arr[i], arr[i - 1]] = [arr[i - 1], arr[i]];
+            i--;
+        } else {
+            i++;
+        }
+    }
+    return arr;
+};
+gnomeSort(arr);
+console.log(arr);
+console.timeEnd("gnome")
