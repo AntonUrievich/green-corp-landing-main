@@ -790,3 +790,90 @@ for (let i = 0; i < list.length; i++) {
     }
 }
 console.log(word);
+
+// Сортировка пузырьком для массива в 100.000 элементов составляет 15-20 секунд
+
+let arr = [];
+function getRandom(n) {
+    return Math.floor(Math.random() *n);
+}
+let length = 10000; // количество случайных чисел в массиве
+
+while (length--) {
+    arr.push(getRandom(100)); // числа до 100
+}
+console.log(arr)
+
+console.time("bubble");
+function bubbleSortConcept1(arr) {
+  for (let j = arr.length - 1; j > 0; j--) {
+    for (let i = 0; i < j; i++) {
+      if (arr[i] > arr[i + 1]) {
+        let temp = arr[i];
+        arr[i] = arr[i + 1];
+        arr[i + 1] = temp;
+      }
+    }
+  }
+}
+bubbleSortConcept1(arr);
+console.log(arr);
+console.timeEnd("bubble")
+
+// Сортировка шейкерная для массива в 100.000 элементов составляет 15-20 секунд
+
+console.time("cocktail")
+function swap(arr, i, j) {
+    var swap = arr[i];
+    arr[i] = arr[j];
+    arr[j] = swap;
+}
+function cocktailSort(arr) {
+    var left = 0;
+    var right = arr.length - 1;
+    while (left < right) {
+        for (var i = left; i < right; i++) {
+            if (arr[i] > arr[i + 1]) {
+                swap(arr, i, i + 1);
+            }
+        }
+        right--;
+        for (var i = right; i > left; i--) {
+            if (arr[i] < arr[i - 1]) {
+                swap(arr, i, i - 1);
+            }
+        }
+        left++;
+    }
+    return arr;
+}
+cocktailSort(arr);
+console.log(arr);
+console.timeEnd("cocktail")
+
+// Сортировка выбором для массива в 100.000 элементов составляет 15-20 секунд
+
+console.time("choise")
+function selectionSort(arr) {
+    let n = arr.length;
+
+    for (let i = 0; i < n; i++) {
+        // Находим наименьшее число в правой части массива
+        let min = i;
+        for (let j = i; j < n; j++) {
+            if (arr[j] < arr[min]) {
+                min = j;
+            }
+        }
+        if (min != i) {
+            // Заменяем элементы
+            let tmp = arr[i];
+            arr[i] = arr[min];
+            arr[min] = tmp;
+        }
+    }
+    return arr;
+}
+selectionSort(arr);
+console.log(arr);
+console.timeEnd("choise")
